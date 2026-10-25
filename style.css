@@ -1,25 +1,2 @@
-body {
-    background: linear-gradient(135deg, #1e3c72, #2a5298); /* सुंदर नीला (Blue) ग्रेडिएंट शेड */
-    color: #ffffff; /* अक्षरों का रंग सफेद हो जाएगा ताकि साफ दिखे */
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-}
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
+console.log("Mountain Photography Website is running!");
 
-.gallery img {
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.05); 
-}
