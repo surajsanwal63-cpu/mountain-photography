@@ -7,7 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <!-- Login / Welcome Popup Modal -->
+ <!-- Center & Big Welcome Popup Modal with "Submit" Button -->
+<div id="welcome-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(8px);">
+    <div style="background: rgba(255, 255, 255, 0.12); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.3); text-align: center; width: 380px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
+        <h2 style="color: #ffffff; margin-bottom: 12px; font-size: 1.8rem;">Welcome</h2>
+        <p style="color: #e0e0e0; font-size: 1rem; margin-bottom: 25px; line-height: 1.4;">Please enter your name and 10-digit mobile number to proceed.</p>
+        
+        <!-- Form jo data ko check karega -->
+        <form onsubmit="validateAndOpen(event)">
+            <input type="text" id="user-name" placeholder="Enter your name" required style="width: 100%; padding: 12px 15px; margin-bottom: 18px; border-radius: 10px; border: none; outline: none; background: rgba(255,255,255,0.95); font-size: 1rem; box-sizing: border-box;">
+            
+            <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" style="width: 100%; padding: 12px 15px; margin-bottom: 22px; border-radius: 10px; border: none; outline: none; background: rgba(255,255,255,0.95); font-size: 1rem; box-sizing: border-box;">
+            
+            <button type="submit" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #ff8a00, #e52e71); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function validateAndOpen(event) {
+        event.preventDefault(); // Page ko refresh hone se rokne ke liye
+        var phone = document.getElementById('user-phone').value;
+        
+        // Check karega ki number theek 10 ankon ka hai ya nahi
+        if(phone.length === 10 && !isNaN(phone)) {
+            // Agar sahi hua toh popup gayab ho jayega
+            document.getElementById('welcome-modal').style.display = 'none';
+        } else {
+            alert('Please enter a valid 10-digit mobile number!');
+        }
+    }
+</script>
 <div id="welcome-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px);">
     <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); text-align: center; width: 300px; box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
         <h3 style="color: #ffffff; margin-bottom: 20px;">Welcome to Mountain Diaries</h3>
