@@ -1,652 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Mountain Lens | Mountain Photography</title> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Photography Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a);
+            color: #ffffff;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
 
-:root {
-    --black: #080d0b;
-    --white: #ffffff;
-    --green: #65b879;
-    --blue: #38bdf8;
-    --muted: #b8c7c0;
-}
+        /* Welcome Popup Modal with Strict Validation */
+        #welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(12px);
+        }
 
-body {
-    background: var(--black);
-    color: var(--white);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
+        .modal-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            width: 380px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+        .modal-box h2 {
+            margin-bottom: 12px;
+            font-size: 1.8rem;
+            color: #fff;
+        }
 
-button, input, textarea, select {
-    font: inherit;
-}
+        .modal-box p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
 
-/* NAVIGATION */
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(8, 13, 11, 0.95);
-    backdrop-filter: blur(12px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 7%;
-    border-bottom: 1px solid #25352b;
-}
+        .modal-box input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            color: #000;
+            box-sizing: border-box;
+        }
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: var(--green);
-}
+        .modal-box button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
+            transition: 0.3s;
+        }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
+        .modal-box button:hover {
+            transform: scale(1.02);
+        }
 
-.nav-links a:hover {
-    color: var(--green);
-}
+        /* Header Styling */
+        header {
+            padding: 50px 0 30px 0;
+        }
 
-/* HOME PAGE */
-.hero {
-    min-height: 88vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
-    background: 
-        linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.72)),
-        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85")
-        center/cover no-repeat;
-}
+        h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff8a00, #e52e71, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(229, 46, 113, 0.3);
+        }
 
-.hero-content {
-    max-width: 850px;
-}
+        header p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            letter-spacing: 1px;
+        }
 
-.hero h1 {
-    font-size: clamp(40px, 7vw, 78px);
-    line-height: 1.15;
-    margin-bottom: 20px;
-}
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 30px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.hero p {
-    font-size: clamp(17px, 2.5vw, 23px);
-    color: #e4eee8;
-    margin-bottom: 30px;
-}
+        .photo-card {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 15px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
 
-.btn {
-    display: inline-block;
-    padding: 13px 27px;
-    background: var(--green);
-    color: #061009;
-    font-weight: bold;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: .3s;
-}
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.3);
+        }
 
-.btn:hover {
-    background: var(--blue);
-    transform: translateY(-3px);
-}
+        .photo-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: 0.3s;
+        }
 
-/* COMMON SECTIONS */
-section {
-    padding: 75px 7%;
-}
+        .photo-title {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
 
-.section-title {
-    text-align: center;
-    font-size: clamp(28px, 4vw, 42px);
-    margin-bottom: 12px;
-}
+        /* Lightbox Modal (Zoom Effect when clicking photo) */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
 
-.section-description {
-    text-align: center;
-    color: var(--muted);
-    margin-bottom: 35px;
-}
+        #lightbox img {
+            max-width: 85%;
+            max-height: 75vh;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
 
-/* GALLERY CONTROLS */
-.gallery-controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-}
+        #lightbox-caption {
+            color: #fff;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
 
-.gallery-controls input, .gallery-controls select {
-    padding: 12px 15px;
-    background: #142019;
-    border: 1px solid #354b3c;
-    color: white;
-    border-radius: 7px;
-    outline: none;
-}
+        #lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.gallery-controls input {
-    width: min(100%, 320px);
-}
+        #lightbox-close:hover {
+            color: #ff8a00;
+        }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
-}
+        /* Video Section */
+        .video-section {
+            margin: 50px auto 20px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
 
-.photo-card {
-    background: #111a14;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #24372a;
-    transition: .3s;
-}
+        .video-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-.photo-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--green);
-}
+        .video-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #38bdf8;
+        }
 
-.photo-card img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
-    cursor: zoom-in;
-}
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
 
-.photo-info {
-    padding: 16px;
-}
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: none;
+        }
 
-.photo-info h3 {
-    margin-bottom: 5px;
-}
-
-.photo-info p {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.photo-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
-}
-
-.small-btn {
-    flex: 1;
-    padding: 9px;
-    border: 1px solid #42644b;
-    background: #1b3021;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.small-btn:hover {
-    background: var(--green);
-    color: #061009;
-}
-
-.no-results {
-    display: none;
-    text-align: center;
-    color: var(--muted);
-    padding: 30px;
-    grid-column: 1 / -1;
-}
-
-/* ABOUT */
-.about {
-    background: #101a13;
-}
-
-.about-content {
-    max-width: 850px;
-    margin: auto;
-    text-align: center;
-}
-
-.about-content p {
-    color: var(--muted);
-    font-size: 17px;
-    margin: 15px 0;
-}
-
-/* CONTACT */
-.contact-content {
-    max-width: 650px;
-    margin: auto;
-}
-
-.contact-form {
-    display: grid;
-    gap: 16px;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 14px;
-    background: #121d16;
-    color: white;
-    border: 1px solid #34483a;
-    border-radius: 7px;
-}
-
-.contact-form textarea {
-    min-height: 140px;
-    resize: vertical;
-}
-
-.form-message {
-    color: var(--green);
-    margin-top: 10px;
-}
-
-/* FULL-SCREEN PHOTO VIEWER (LIGHTBOX) */
-.lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.96);
-    z-index: 500;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 60px 15px 25px;
-}
-
-.lightbox img {
-    max-width: 95%;
-    max-height: 75vh;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.lightbox-caption {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--white);
-}
-
-.lightbox-close {
-    position: absolute;
-    right: 25px;
-    top: 10px;
-    color: white;
-    font-size: 42px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.lightbox-download {
-    margin-top: 15px;
-    text-decoration: none;
-}
-
-/* FOOTER */
-footer {
-    padding: 25px 15px;
-    background: #050806;
-    color: var(--muted);
-    text-align: center;
-    border-top: 1px solid #25352b;
-}
-
-footer span {
-    color: var(--green);
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 900px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        gap: 12px;
-        padding: 15px 10px;
-    }
-    
-    .nav-links {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-        font-size: 14px;
-    }
-    
-    .hero {
-        min-height: 75vh;
-    }
-    
-    section {
-        padding: 55px 5%;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVIGATION BAR -->
-<nav>
-    <a href="#home" class="logo">🏔️ Mountain Lens</a>
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- HOME PAGE -->
-<header class="hero" id="home">
-    <div class="hero-content">
-        <h1>Capture the Beauty of Mountains</h1>
-        <p>
-            Discover the magical landscapes, peaceful villages,
-            and breathtaking beauty of Uttarakhand Himalayas.
-        </p>
-        <a href="#gallery" class="btn">Explore Gallery ↓</a>
-    </div>
-</header>
-
-<!-- PHOTO GALLERY -->
-<section id="gallery">
-    <h2 class="section-title">Explore Our Gallery</h2>
-    <p class="section-description">
-        Every mountain has a story. Discover it through photography.
-    </p>
-
-    <div class="gallery-controls">
-        <input 
-            type="search" 
-            id="searchInput" 
-            placeholder="🔍 Search mountain photos..." 
-            aria-label="Search photos"
-        >
-        <select id="categoryFilter" aria-label="Filter by category">
-            <option value="all">All Categories</option>
-            <option value="snow">Snow Mountains</option>
-            <option value="green">Green Mountains</option>
-            <option value="sunrise">Sunrise & Sunset</option>
-            <option value="village">Mountain Villages</option>
-            <option value="river">Rivers & Waterfalls</option>
-            <option value="night">Night Photography</option>
-        </select>
+    <!-- Welcome Popup Modal (Strict Validation) -->
+    <div id="welcome-modal">
+        <div class="modal-box">
+            <h2>Welcome</h2>
+            <p>Please enter your name and 10-digit mobile number to proceed.</p>
+            
+            <form onsubmit="validateAndOpen(event)">
+                <input type="text" id="user-name" placeholder="Enter your name" required>
+                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 
-    <div class="gallery-grid" id="galleryGrid">
-        <!-- SNOW MOUNTAINS -->
-        <article class="photo-card" data-category="snow">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85" alt="Snow covered mountain peaks" loading="lazy">
-            <div class="photo-info">
-                <h3>Snow Mountain Peaks</h3>
-                <p>Category: Snow Mountains</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="photo-card" data-category="snow">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85" alt="Mountain under a starry sky" loading="lazy">
-            <div class="photo-info">
-                <h3>Himalayan Landscape</h3>
-                <p>Category: Snow Mountains</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- GREEN MOUNTAINS -->
-        <article class="photo-card" data-category="green">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85" alt="Beautiful green forest" loading="lazy">
-            <div class="photo-info">
-                <h3>Green Mountain Forest</h3>
-                <p>Category: Green Mountains</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="photo-card" data-category="green">
-            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1600&q=85" alt="Beautiful natural landscape" loading="lazy">
-            <div class="photo-info">
-                <h3>Nature's Paradise</h3>
-                <p>Category: Green Mountains</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- SUNRISE AND SUNSET -->
-        <article class="photo-card" data-category="sunrise">
-            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85" alt="Sunlight over a mountain lake" loading="lazy">
-            <div class="photo-info">
-                <h3>Golden Sunrise</h3>
-                <p>Category: Sunrise & Sunset</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="photo-card" data-category="sunrise">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85" alt="Beautiful sunset landscape" loading="lazy">
-            <div class="photo-info">
-                <h3>Sunset in the Hills</h3>
-                <p>Category: Sunrise & Sunset</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- MOUNTAIN VILLAGES -->
-        <article class="photo-card" data-category="village">
-            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1600&q=85" alt="Peaceful wooden mountain house" loading="lazy">
-            <div class="photo-info">
-                <h3>Peaceful Mountain Home</h3>
-                <p>Category: Mountain Villages</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="photo-card" data-category="village">
-            <img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1600&q=85" alt="Mountain landscape and countryside" loading="lazy">
-            <div class="photo-info">
-                <h3>Mountain Countryside</h3>
-                <p>Category: Mountain Villages</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- RIVERS AND WATERFALLS -->
-        <article class="photo-card" data-category="river">
-            <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1600&q=85" alt="Waterfall surrounded by nature" loading="lazy">
-            <div class="photo-info">
-                <h3>Mountain Waterfall</h3>
-                <p>Category: Rivers & Waterfalls</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="photo-card" data-category="river">
-            <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=85" alt="Waterfall in a green landscape" loading="lazy">
-            <div class="photo-info">
-                <h3>Hidden Waterfall</h3>
-                <p>Category: Rivers & Waterfalls</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- NIGHT PHOTOGRAPHY -->
-        <article class="photo-card" data-category="night">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85" alt="Stars above a mountain" loading="lazy">
-            <div class="photo-info">
-                <h3>Starry Mountain Night</h3>
-                <p>Category: Night Photography</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="photo-card" data-category="night">
-            <img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=1600&q=85" alt="Beautiful night sky" loading="lazy">
-            <div class="photo-info">
-                <h3>Night Sky Wonders</h3>
-                <p>Category: Night Photography</p>
-                <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <a href="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=1600&q=85" target="_blank" class="small-btn download-btn">Download</a>
-                </div>
-            </div>
-        </article>
-
-        <p class="no-results" id="noResults">
-            No photos found. Try another search.
-        </p>
+    <!-- Lightbox Zoom Modal -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Zoomed Photo">
+        <div id="lightbox-caption"></div>
     </div>
-</section>
 
-<!-- ABOUT PHOTOGRAPHER -->
-<section class="about" id="about">
-    <div class="about-content">
-        <h2 class="section-title">About Photographer</h2>
-        <p>
-            Welcome to Mountain Lens! I am passionate about capturing
-            the raw, untouched beauty of mountain landscapes, deep
-            valleys, and peaceful village life across the majestic
-            Himalayas of Uttarakhand.
-        </p>
-        <p>
-            Every photograph tells a story of the serene heights,
-            shifting clouds, and vibrant nature of Devbhumi.
-            My goal is to share the beauty of the mountains with the world.
-        </p>
-        <a href="#contact" class="btn">Get In Touch</a>
+    <!-- Website Header with New Heading -->
+    <header>
+        <h1>Devbhumi Uttarakhand ka Pahad</h1>
+        <p>म्यारा खूबसूरत पहाड़ 🫶🏼🧿</p>
+    </header>
+
+    <!-- Photo Gallery with Click to Zoom -->
+    <div class="gallery">
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe', 'Dumak Valley View')">
+            <img src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" alt="Dumak Valley">
+            <p class="photo-title">Dumak Valley View</p>
+        </div>
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec', 'Snow Mountain Sunrise')">
+            <img src="https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec" alt="Sunrise">
+            <p class="photo-title">Snow Mountain Sunrise</p>
+        </div>
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06', 'Himalayan Ranges')">
+            <img src="https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06" alt="Ranges">
+            <p class="photo-title">Himalayan Ranges</p>
+        </div>
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98', 'Green Hills & Clouds')">
+            <img src="https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98" alt="Green Hills">
+            <p class="photo-title">Green Hills & Clouds</p>
+        </div>
     </div>
-</section>
 
-<!-- CONTACT FORM -->
-<section id="contact">
-    <h2 class="section-title">Contact Me</h2>
-    <p class="section-description">
-        Have a question or want to share your love for mountains?
-        Send a message.
-    </p>
-    <div class="contact-content">
-        <form class="contact-form" id="contactForm">
-            <input type="text" id="contactName" placeholder="Your Name" required>
-            <input type="email" id="contactEmail" placeholder="Your Email" required>
-            <textarea id="contactMessage" placeholder="Write your message..." required></textarea>
-            <button type="submit" class="btn">Prepare Message</button>
-        </form>
-        <p class="form-message" id="formMessage" aria-live="polite"></p>
+    <!-- Video Section -->
+    <div class="video-section">
+        <div class="video-box">
+            <h3>Mountain Vibes</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Mountain Video" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
-</section>
 
-<!-- FULL-SCREEN IMAGE VIEWER (LIGHTBOX) -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="if(event.target === this) closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">&times;</button>
-    <img id="lightboxImage" src="" alt="Enlarged mountain photograph">
-    <h3 class="lightbox-caption" id="lightboxCaption"></h3>
-    <a href="#" class="btn lightbox-download" id="lightboxDownload" target="_blank">Download Photo</a>
-</div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Mountain Photography | Designed with ❤️🙇‍♂️</p>
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-    <p>
-        © <span id="year"></span> 
-        <span>Mountain Lens</span> | 
-        Capturing the Beauty of Uttarakhand 🏔️
-    </p>
-</footer>
+    <!-- JavaScript for Validation & Lightbox Zoom -->
+    <script>
+        function validateAndOpen(event) {
+            event.preventDefault();
+            var phone = document.getElementById('user-phone').value;
+            var mobileRegex = /^[6-9]\d{9}$/;
+            
+            if(mobileRegex.test(phone)) {
+                document.getElementById('welcome-modal').style.display = 'none';
+            } else {
+                alert('Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!');
+            }
+        }
 
-<script>
-// CURRENT YEAR
-document.getElementById("year").textContent = new Date().getFullYear();
+        function openLightbox(imgSrc, captionText) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').innerText = captionText;
+        }
 
-// SEARCH AND CATEGORY FILTER LOGIC
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const cards = document.querySelectorAll(".photo-card");
-const noResults = document.getElementById("noResults");
-
-function filterGallery() {
-    const searchText = searchInput.value.toLowerCase().trim();
-    const selectedCategory = categoryFilter.value;
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        const category = card.dataset.category;
-        const description = card.querySelector(".photo-info p").textContent.toLowerCase();
-
-        const matchesSearch = title.includes(searchText) || description.includes(searchText);
-        const matchesCategory = selectedCategory === "all" || selectedCategory === category;
-
-        if (matchesSearch && matchesCategory) {
-            card.style.display = "";
-            visibleCount++;
-        } else {
-            car
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
