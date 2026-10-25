@@ -19,75 +19,6 @@
             min-height: 100vh;
         }
 
-        /* Welcome Popup Modal */
-        #welcome-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 3000;
-            backdrop-filter: blur(12px);
-        }
-
-        .modal-box {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            width: 380px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-box h2 {
-            margin-bottom: 12px;
-            font-size: 1.8rem;
-            color: #fff;
-        }
-
-        .modal-box p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
-
-        .modal-box input {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 18px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            outline: none;
-            background: rgba(255, 255, 255, 0.95);
-            font-size: 1rem;
-            color: #000;
-            box-sizing: border-box;
-        }
-
-        .modal-box button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #10b981, #0284c7);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .modal-box button:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
         /* Navigation Bar */
         nav {
             position: fixed;
@@ -421,19 +352,6 @@
 </head>
 <body>
 
-    <!-- Welcome Popup Modal -->
-    <div id="welcome-modal">
-        <div class="modal-box">
-            <h2>Welcome</h2>
-            <p>Please enter your name and 10-digit mobile number to proceed.</p>
-            <form onsubmit="validateAndOpen(event)">
-                <input type="text" id="user-name" placeholder="Enter your name" required>
-                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Lightbox Full-Screen Modal -->
     <div id="lightbox" onclick="closeLightbox()">
         <span id="lightbox-close">&times;</span>
@@ -477,7 +395,7 @@
             </div>
         </div>
 
-        <!-- Gallery Items with Requested Names & Download Buttons -->
+        <!-- Gallery Items (All 9 Photos with WhatsApp & Download) -->
         <div class="gallery-grid" id="galleryGrid">
             
             <!-- 1. Laal Mati -->
@@ -567,4 +485,58 @@
         <div class="about-contact-grid" id="about">
             <div class="box-card">
                 <h3>About Photographer</h3>
-                <p>Welcome to Mountain Lens! I am passionate about capturing the raw, untouche
+                <p>Welcome to Mountain Lens! I am passionate about capturing the raw, untouched beauty of mountain landscapes, deep valleys, and peaceful village life across the majestic Himalayas of Uttarakhand.</p>
+                <p>Every photograph tells a story of the serene heights, shifting clouds, and vibrant nature of Devbhumi.</p>
+            </div>
+
+            <!-- Contact Form connected with WhatsApp -->
+            <div class="box-card" id="contact">
+                <h3>Contact Me</h3>
+                <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+                    <input type="text" id="contact-name" placeholder="Your Name" required>
+                    <input type="email" id="contact-email" placeholder="Your Email" required>
+                    <textarea id="contact-msg" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Mountain Lens | Devbhumi Uttarakhand. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function openLightbox(imgSrc, captionText) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').innerText = captionText;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function filterCategory(category, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            let cards = document.querySelectorAll('.photo-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function searchPhotos() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let cards = document.querySelectorAll('.photo-card');
+
+            cards.forEach(card => {
+                let title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = 'block';
