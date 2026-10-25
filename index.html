@@ -1,63 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mountain Photography</title>
+    <title>Mountain Photography | Uttarakhand</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body><header>
+    <h2>🏔️ Mountain Photography</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#places">Beautiful Places</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <h1>Alpine Lens</h1>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h2>Capturing the Majesty of Mountains</h2>
-            <p>A visual journey through peaks, valleys, and skies.</p>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <h2>My Shots</h2>
-        
-        <!-- Filter Buttons -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="snow">Snow Peaks</button>
-            <button class="filter-btn" data-filter="sunset">Sunsets</button>
-        </div>
-
-        <!-- Photo Grid -->
-        <div class="photo-grid">
-            <div class="photo-card" data-category="snow"><img src="mountain1.jpg" alt="Snow Mountain 1"></div>
-            <div class="photo-card" data-category="sunset"><img src="mountain2.jpg" alt="Sunset Mountain"></div>
-            <div class="photo-card" data-category="snow"><img src="mountain3.jpg" alt="Snow Mountain 2"></div>
-        </div>
-    </section>
-
-    <!-- Lightbox Modal (Popup for images) -->
-    <div id="lightbox" class="lightbox">
-        <span class="close">&times;</span>
-        <img class="lightbox-img" id="lightbox-img" src="" alt="Zoomed Photo">
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Discover the Beauty of Mountains</h1>
+        <p>Explore the beautiful mountains, valleys and nature of Uttarakhand.</p>
+        <a href="#gallery" class="btn">Explore Gallery</a>
     </div>
+</section>
 
-    <!-- JavaScript Link -->
-    <script src="script.js"></script>
+<section id="places">
+    <h2>Beautiful Places of Uttarakhand</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Mountain landscape">
+            <h3>Beautiful Mountains</h3>
+            <p>Enjoy the peaceful beauty of the Himalayas.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" alt="Lake and mountains">
+            <h3>Nature and Lakes</h3>
+            <p>Discover beautiful lakes and green valleys.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Nature scenery">
+            <h3>Natural Beauty</h3>
+            <p>Experience the beauty of the natural world.</p>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2>Mountain Photo Gallery</h2>
     <div class="gallery">
-    <h2>My Mountain Photos</h2>
-<img width="738" height="1599" alt="photo2 jpg" src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" />
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Mountain view">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" alt="Lake view">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Nature view">
+    <img width="738" height="1599" alt="photo2 jpg" src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" />
 <img width="738" height="1599" alt="photo1 jpg" src="https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec" />
 <img width="1599" height="738" alt="photo13jpg" src="https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06" />
 <img width="1599" height="1200" alt="photo4 jpg" src="https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98" />
@@ -65,7 +60,21 @@
 <img width="1599" height="738" alt="photo 6jpg" src="https://github.com/user-attachments/assets/d01c58e2-c69b-4625-a80c-92ccdf2663f3" />
 <img width="1600" height="1200" alt="photo 7jpg" src="https://github.com/user-attachments/assets/530c54ee-86cc-4a50-a22b-0d896ab9f1e0" />
 <img width="1600" height="1200" alt="photo 8jpg" src="https://github.com/user-attachments/assets/ec979ab3-66fa-48df-b1c3-49207e99ff40" />
-  
-</div>
+    
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Welcome to our Mountain Photography website!</p>
+    <a class="btn" href="mailto:hello@example.com">Send Email</a>
+</section>
+
+<footer>
+    <p>© 2026 Mountain Photography | Explore Nature 🏔️</p>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
