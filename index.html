@@ -128,7 +128,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://github.com/user-attachments/assets/1000401366.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -281,7 +281,7 @@
         }
 
         .photo-title {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: #fff;
         }
@@ -477,38 +477,51 @@
             </div>
         </div>
 
-        <!-- Gallery Items -->
+        <!-- Gallery Items (Ordered as requested) -->
         <div class="gallery-grid" id="galleryGrid">
             
-            <div class="photo-card" data-category="snow" data-title="Snow Mountain Sunrise">
-                <img src="https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec" alt="Snow Mountain" onclick="openLightbox(this.src, 'Snow Mountain Sunrise')">
+            <!-- 1. Lal Mati -->
+            <div class="photo-card" data-category="green" data-title="lal mati">
+                <img src="https://github.com/user-attachments/assets/1000401400.jpg" alt="lal mati" onclick="openLightbox(this.src, 'Lal Mati')">
                 <div class="photo-info">
-                    <span class="photo-title">Snow Mountain Sunrise</span>
-                    <a href="https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec" download class="download-btn" target="_blank">Download</a>
+                    <span class="photo-title">Lal Mati</span>
+                    <a href="https://github.com/user-attachments/assets/1000401400.jpg" download class="download-btn" target="_blank">Download</a>
                 </div>
             </div>
 
-            <div class="photo-card" data-category="green" data-title="Dumak Valley View">
-                <img src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" alt="Dumak Valley" onclick="openLightbox(this.src, 'Dumak Valley View')">
+            <!-- 2. Manpayi Bugyal -->
+            <div class="photo-card" data-category="green" data-title="manpayi bugyal">
+                <img src="https://github.com/user-attachments/assets/1000401390.jpg" alt="manpayi bugyal" onclick="openLightbox(this.src, 'Manpayi Bugyal')">
                 <div class="photo-info">
-                    <span class="photo-title">Dumak Valley View</span>
-                    <a href="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" download class="download-btn" target="_blank">Download</a>
+                    <span class="photo-title">Manpayi Bugyal</span>
+                    <a href="https://github.com/user-attachments/assets/1000401390.jpg" download class="download-btn" target="_blank">Download</a>
                 </div>
             </div>
 
-            <div class="photo-card" data-category="snow" data-title="Himalayan Ranges">
-                <img src="https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06" alt="Ranges" onclick="openLightbox(this.src, 'Himalayan Ranges')">
+            <!-- 3. Toli Taal -->
+            <div class="photo-card" data-category="river" data-title="toli taal">
+                <img src="https://github.com/user-attachments/assets/1000401397.jpg" alt="toli taal" onclick="openLightbox(this.src, 'Toli Taal')">
                 <div class="photo-info">
-                    <span class="photo-title">Himalayan Ranges</span>
-                    <a href="https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06" download class="download-btn" target="_blank">Download</a>
+                    <span class="photo-title">Toli Taal</span>
+                    <a href="https://github.com/user-attachments/assets/1000401397.jpg" download class="download-btn" target="_blank">Download</a>
                 </div>
             </div>
 
-            <div class="photo-card" data-category="green" data-title="Green Hills & Clouds">
-                <img src="https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98" alt="Green Hills" onclick="openLightbox(this.src, 'Green Hills & Clouds')">
+            <!-- 4. Sunrise Nanda Devi Parvat -->
+            <div class="photo-card" data-category="sunrise" data-title="sunrise nanda devi parvat">
+                <img src="https://github.com/user-attachments/assets/1000401383.jpg" alt="sunrise nanda devi parvat" onclick="openLightbox(this.src, 'Sunrise Nanda Devi Parvat')">
                 <div class="photo-info">
-                    <span class="photo-title">Green Hills & Clouds</span>
-                    <a href="https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98" download class="download-btn" target="_blank">Download</a>
+                    <span class="photo-title">Sunrise Nanda Devi Parvat</span>
+                    <a href="https://github.com/user-attachments/assets/1000401383.jpg" download class="download-btn" target="_blank">Download</a>
+                </div>
+            </div>
+
+            <!-- 5. Nanda Devi Parvat -->
+            <div class="photo-card" data-category="snow" data-title="nanda devi parvat">
+                <img src="https://github.com/user-attachments/assets/1000401366.jpg" alt="nanda devi parvat" onclick="openLightbox(this.src, 'Nanda Devi Parvat')">
+                <div class="photo-info">
+                    <span class="photo-title">Nanda Devi Parvat</span>
+                    <a href="https://github.com/user-attachments/assets/1000401366.jpg" download class="download-btn" target="_blank">Download</a>
                 </div>
             </div>
 
@@ -563,7 +576,7 @@
             document.getElementById('lightbox-caption').innerText = captionText;
         }
 
-        function closeLightbox() {
+        closeLightbox = function() {
             document.getElementById('lightbox').style.display = 'none';
         }
 
@@ -586,20 +599,4 @@
             let cards = document.querySelectorAll('.photo-card');
 
             cards.forEach(card => {
-                let title = card.getAttribute('data-title').toLowerCase();
-                if (title.includes(input)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function handleContact(event) {
-            event.preventDefault();
-            alert('Thank you for reaching out! Your message has been sent successfully.');
-            event.target.reset();
-        }
-    </script>
-</body>
-</html>
+                let title = card.getAt
