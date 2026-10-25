@@ -13,26 +13,26 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a);
             color: #ffffff;
             min-height: 100vh;
             text-align: center;
             padding: 20px;
         }
 
-        /* Welcome Popup Modal */
+        /* Welcome Popup Modal with Strict Validation */
         #welcome-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            z-index: 2000;
+            backdrop-filter: blur(12px);
         }
 
         .modal-box {
@@ -42,7 +42,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
             width: 380px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
         }
 
         .modal-box h2 {
@@ -52,7 +52,7 @@
         }
 
         .modal-box p {
-            color: #ddd;
+            color: #cbd5e1;
             font-size: 0.95rem;
             margin-bottom: 25px;
             line-height: 1.4;
@@ -67,6 +67,8 @@
             outline: none;
             background: rgba(255, 255, 255, 0.95);
             font-size: 1rem;
+            color: #000;
+            box-sizing: border-box;
         }
 
         .modal-box button {
@@ -89,22 +91,22 @@
 
         /* Header Styling */
         header {
-            padding: 40px 0;
+            padding: 50px 0 30px 0;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #ff8a00, #e52e71, #00c6ff);
+            background: linear-gradient(45deg, #ff8a00, #e52e71, #38bdf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(229, 46, 113, 0.3);
+            text-shadow: 0 0 30px rgba(229, 46, 113, 0.3);
         }
 
         header p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
+            font-size: 1.25rem;
+            color: #cbd5e1;
             letter-spacing: 1px;
         }
 
@@ -113,67 +115,161 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            padding: 20px 40px;
+            padding: 30px 40px;
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .photo-card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s ease;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
         }
 
         .photo-card:hover {
             transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.3);
         }
 
         .photo-card img {
             width: 100%;
-            height: 220px;
+            height: 230px;
             object-fit: cover;
             border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: 0.3s;
         }
 
         .photo-title {
             color: #ffffff;
-            font-size: 1.1rem;
-            font-weight: bold;
+            font-size: 1.15rem;
+            font-weight: 600;
             margin-top: 12px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Lightbox Modal (Zoom Effect when clicking photo) */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
+
+        #lightbox img {
+            max-width: 85%;
+            max-height: 75vh;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #lightbox-caption {
+            color: #fff;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #lightbox-close:hover {
+            color: #ff8a00;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 50px auto 20px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .video-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .video-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #38bdf8;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: none;
         }
 
         /* Footer */
         footer {
             margin-top: 60px;
             padding: 25px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.95rem;
-            color: #ccc;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
 
-    <!-- Welcome Popup Modal -->
+    <!-- Welcome Popup Modal (Strict Validation) -->
     <div id="welcome-modal">
         <div class="modal-box">
             <h2>Welcome</h2>
             <p>Please enter your name and 10-digit mobile number to proceed.</p>
+            
             <form onsubmit="validateAndOpen(event)">
                 <input type="text" id="user-name" placeholder="Enter your name" required>
-                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
+    </div>
+
+    <!-- Lightbox Zoom Modal -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Zoomed Photo">
+        <div id="lightbox-caption"></div>
     </div>
 
     <!-- Website Header -->
@@ -182,23 +278,34 @@
         <p>पहाड़ों की ऊँचाइयों और खूबसूरत वादियों का सफर</p>
     </header>
 
-    <!-- Photo Gallery -->
+    <!-- Photo Gallery with Click to Zoom -->
     <div class="gallery">
-        <div class="photo-card">
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe', 'Dumak Valley View')">
             <img src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" alt="Dumak Valley">
             <p class="photo-title">Dumak Valley View</p>
         </div>
-        <div class="photo-card">
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec', 'Snow Mountain Sunrise')">
             <img src="https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec" alt="Sunrise">
             <p class="photo-title">Snow Mountain Sunrise</p>
         </div>
-        <div class="photo-card">
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06', 'Himalayan Ranges')">
             <img src="https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06" alt="Ranges">
             <p class="photo-title">Himalayan Ranges</p>
         </div>
-        <div class="photo-card">
+        <div class="photo-card" onclick="openLightbox('https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98', 'Green Hills & Clouds')">
             <img src="https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98" alt="Green Hills">
             <p class="photo-title">Green Hills & Clouds</p>
+        </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-section">
+        <div class="video-box">
+            <h3>Mountain Vibes</h3>
+            <div class="video-container">
+                <!-- Aap yahan apni koi bhi YouTube video ka link laga sakti hain -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Mountain Video" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
@@ -207,22 +314,31 @@
         <p>© 2026 Mountain Photography | Designed with ❤️</p>
     </footer>
 
-    <!-- JavaScript Validation -->
+    <!-- JavaScript for Validation & Lightbox Zoom -->
     <script>
-    function validateAndOpen(event) {
-        event.preventDefault();
-        var phone = document.getElementById('user-phone').value;
-        
-        // Yeh check karega ki number theek 10 ankon ka ho, sirf numbers hon, 
-        // aur shuruat 6, 7, 8 ya 9 se ho (jaise real Indian mobile numbers hote hain)
-        var mobileRegex = /^[6-9]\d{9}$/;
-        
-        if(mobileRegex.test(phone)) {
-            document.getElementById('welcome-modal').style.display = 'none';
-        } else {
-            alert('Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!');
+        // Strict Mobile Number Validation
+        function validateAndOpen(event) {
+            event.preventDefault();
+            var phone = document.getElementById('user-phone').value;
+            var mobileRegex = /^[6-9]\d{9}$/;
+            
+            if(mobileRegex.test(phone)) {
+                document.getElementById('welcome-modal').style.display = 'none';
+            } else {
+                alert('Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!');
+            }
         }
-    }
-</script>
+
+        // Lightbox Zoom Functions
+        function openLightbox(imgSrc, captionText) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-caption').innerText = captionText;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
