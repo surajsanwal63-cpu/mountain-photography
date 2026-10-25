@@ -1,2 +1,9 @@
 console.log("Mountain Photography Website is running!");
-
+.gallery img {
+    width: 300px; /* सभी फोटो की चौड़ाई एक जैसी होगी */
+    height: 200px; /* सभी फोटो की लंबाई एक जैसी होगी */
+    object-fit: cover; /* फोटो फटेगी नहीं, सुंदर दिखेगी */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
