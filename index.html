@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mountain Lens | Mountain Photography</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Mountain Lens | Mountain Photography</title> 
 
 <style>
 * {
@@ -39,7 +38,6 @@ button, input, textarea, select {
 }
 
 /* NAVIGATION */
-
 nav {
     position: sticky;
     top: 0;
@@ -70,7 +68,6 @@ nav {
 }
 
 /* HOME PAGE */
-
 .hero {
     min-height: 88vh;
     display: flex;
@@ -78,7 +75,7 @@ nav {
     justify-content: center;
     text-align: center;
     padding: 40px 20px;
-    background:
+    background: 
         linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.72)),
         url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85")
         center/cover no-repeat;
@@ -118,7 +115,6 @@ nav {
 }
 
 /* COMMON SECTIONS */
-
 section {
     padding: 75px 7%;
 }
@@ -136,7 +132,6 @@ section {
 }
 
 /* GALLERY CONTROLS */
-
 .gallery-controls {
     display: flex;
     flex-wrap: wrap;
@@ -145,8 +140,7 @@ section {
     margin-bottom: 30px;
 }
 
-.gallery-controls input,
-.gallery-controls select {
+.gallery-controls input, .gallery-controls select {
     padding: 12px 15px;
     background: #142019;
     border: 1px solid #354b3c;
@@ -157,10 +151,6 @@ section {
 
 .gallery-controls input {
     width: min(100%, 320px);
-}
-
-.gallery-controls select {
-    max-width: 100%;
 }
 
 .gallery-grid {
@@ -233,7 +223,6 @@ section {
 }
 
 /* ABOUT */
-
 .about {
     background: #101a13;
 }
@@ -251,7 +240,6 @@ section {
 }
 
 /* CONTACT */
-
 .contact-content {
     max-width: 650px;
     margin: auto;
@@ -262,8 +250,7 @@ section {
     gap: 16px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .contact-form textarea {
     width: 100%;
     padding: 14px;
     background: #121d16;
@@ -283,7 +270,6 @@ section {
 }
 
 /* FULL-SCREEN PHOTO VIEWER */
-
 .lightbox {
     display: none;
     position: fixed;
@@ -306,6 +292,7 @@ section {
 .lightbox-caption {
     margin-top: 15px;
     text-align: center;
+    color: var(--white);
 }
 
 .lightbox-close {
@@ -321,10 +308,10 @@ section {
 
 .lightbox-download {
     margin-top: 15px;
+    text-decoration: none;
 }
 
 /* FOOTER */
-
 footer {
     padding: 25px 15px;
     background: #050806;
@@ -338,7 +325,6 @@ footer span {
 }
 
 /* MOBILE RESPONSIVE */
-
 @media (max-width: 900px) {
     .gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -351,28 +337,24 @@ footer span {
         gap: 12px;
         padding: 15px 10px;
     }
-
+    
     .nav-links {
         gap: 15px;
         flex-wrap: wrap;
         justify-content: center;
         font-size: 14px;
     }
-
+    
     .hero {
         min-height: 75vh;
     }
-
+    
     section {
         padding: 55px 5%;
     }
-
+    
     .gallery-grid {
         grid-template-columns: 1fr;
-    }
-
-    .photo-card img {
-        height: 250px;
     }
 }
 </style>
@@ -381,419 +363,284 @@ footer span {
 <body>
 
 <!-- NAVIGATION BAR -->
-
 <nav>
     <a href="#home" class="logo">🏔️ Mountain Lens</a>
-
     <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home">होम</a></li>
+        <li><a href="#gallery">गैलरी</a></li>
+        <li><a href="#about">हमारे बारे में</a></li>
+        <li><a href="#contact">संपर्क करें</a></li>
     </ul>
 </nav>
 
 <!-- HOME PAGE -->
-
 <header class="hero" id="home">
     <div class="hero-content">
-        <h1>Capture the Beauty of Mountains</h1>
-
+        <h1>पहाड़ों की खूबसूरती को कैद करें</h1>
         <p>
-            Discover the magical landscapes, peaceful villages,
-            and breathtaking beauty of Uttarakhand Himalayas.
+            उत्तराखंड हिमालय के जादुई परिदृश्य, शांत गांवों और लुभावनी सुंदरता की खोज करें।
         </p>
-
-        <a href="#gallery" class="btn">Explore Gallery ↓</a>
+        <a href="#gallery" class="btn">गैलरी देखें ↓</a>
     </div>
 </header>
 
 <!-- PHOTO GALLERY -->
-
 <section id="gallery">
-
-    <h2 class="section-title">Explore Our Gallery</h2>
-
+    <h2 class="section-title">हमारी गैलरी देखें</h2>
     <p class="section-description">
-        Every mountain has a story. Discover it through photography.
+        हर पहाड़ की एक कहानी होती है। फोटोग्राफी के माध्यम से इसे खोजें।
     </p>
 
     <div class="gallery-controls">
-
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="🔍 Search mountain photos..."
+        <input 
+            type="search" 
+            id="searchInput" 
+            placeholder="🔍 पहाड़ की तस्वीरें खोजें..." 
             aria-label="Search photos"
         >
-
         <select id="categoryFilter" aria-label="Filter by category">
-            <option value="all">All Categories</option>
-            <option value="snow">Snow Mountains</option>
-            <option value="green">Green Mountains</option>
-            <option value="sunrise">Sunrise & Sunset</option>
-            <option value="village">Mountain Villages</option>
-            <option value="river">Rivers & Waterfalls</option>
-            <option value="night">Night Photography</option>
+            <option value="all">सभी श्रेणियां</option>
+            <option value="snow">बर्फ से ढके पहाड़</option>
+            <option value="green">हरे-भरे पहाड़</option>
+            <option value="sunrise">सूर्योदय और सूर्यास्त</option>
+            <option value="village">पहाड़ी गांव</option>
+            <option value="river">नदियाँ और झरने</option>
+            <option value="night">रात्रि फोटोग्राफी</option>
         </select>
-
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
-
         <!-- SNOW MOUNTAINS -->
-
         <article class="photo-card" data-category="snow">
-            <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
-                alt="Snow covered mountain peaks"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85" alt="बर्फ से ढकी चोटियाँ" loading="lazy">
             <div class="photo-info">
-                <h3>Snow Mountain Peaks</h3>
+                <h3>बर्फ से ढकी चोटियाँ</h3>
                 <p>Category: Snow Mountains</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <article class="photo-card" data-category="snow">
-            <img
-                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80"
-                alt="Mountain under a starry sky"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85" alt="हिमालयन लैंडस्केप" loading="lazy">
             <div class="photo-info">
-                <h3>Himalayan Landscape</h3>
+                <h3>हिमालयन लैंडस्केप</h3>
                 <p>Category: Snow Mountains</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <!-- GREEN MOUNTAINS -->
-
         <article class="photo-card" data-category="green">
-            <img
-                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80"
-                alt="Beautiful green forest"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85" alt="हरा-भरा पहाड़ी जंगल" loading="lazy">
             <div class="photo-info">
-                <h3>Green Mountain Forest</h3>
+                <h3>हरा-भरा पहाड़ी जंगल</h3>
                 <p>Category: Green Mountains</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <article class="photo-card" data-category="green">
-            <img
-                src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80"
-                alt="Beautiful natural landscape"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=85" alt="प्रकृति का स्वर्ग" loading="lazy">
             <div class="photo-info">
-                <h3>Nature's Paradise</h3>
+                <h3>प्रकृति का स्वर्ग</h3>
                 <p>Category: Green Mountains</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <!-- SUNRISE AND SUNSET -->
-
         <article class="photo-card" data-category="sunrise">
-            <img
-                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80"
-                alt="Sunlight over a mountain lake"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85" alt="सुनहरी सुबह" loading="lazy">
             <div class="photo-info">
-                <h3>Golden Sunrise</h3>
+                <h3>सुनहरी सुबह</h3>
                 <p>Category: Sunrise & Sunset</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <article class="photo-card" data-category="sunrise">
-            <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-                alt="Beautiful sunset landscape"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="पहाड़ियों में सूर्यास्त" loading="lazy">
             <div class="photo-info">
-                <h3>Sunset in the Hills</h3>
+                <h3>पहाड़ियों में सूर्यास्त</h3>
                 <p>Category: Sunrise & Sunset</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <!-- MOUNTAIN VILLAGES -->
-
         <article class="photo-card" data-category="village">
-            <img
-                src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=80"
-                alt="Peaceful wooden mountain house"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85" alt="शांत पहाड़ी घर" loading="lazy">
             <div class="photo-info">
-                <h3>Peaceful Mountain Home</h3>
+                <h3>शांत पहाड़ी घर</h3>
                 <p>Category: Mountain Villages</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <article class="photo-card" data-category="village">
-            <img
-                src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=80"
-                alt="Mountain landscape and countryside"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1200&q=85" alt="पहाड़ी ग्रामीण इलाका" loading="lazy">
             <div class="photo-info">
-                <h3>Mountain Countryside</h3>
+                <h3>पहाड़ी ग्रामीण इलाका</h3>
                 <p>Category: Mountain Villages</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <!-- RIVERS AND WATERFALLS -->
-
         <article class="photo-card" data-category="river">
-            <img
-                src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=900&q=80"
-                alt="Waterfall surrounded by nature"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=85" alt="पहाड़ी झरना" loading="lazy">
             <div class="photo-info">
-                <h3>Mountain Waterfall</h3>
+                <h3>पहाड़ी झरना</h3>
                 <p>Category: Rivers & Waterfalls</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <article class="photo-card" data-category="river">
-            <img
-                src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=900&q=80"
-                alt="Waterfall in a green landscape"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=85" alt="छुपा हुआ झरना" loading="lazy">
             <div class="photo-info">
-                <h3>Hidden Waterfall</h3>
+                <h3>छुपा हुआ झरना</h3>
                 <p>Category: Rivers & Waterfalls</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <!-- NIGHT PHOTOGRAPHY -->
-
         <article class="photo-card" data-category="night">
-            <img
-                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80"
-                alt="Stars above a mountain"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85" alt="तारों भरी पहाड़ी रात" loading="lazy">
             <div class="photo-info">
-                <h3>Starry Mountain Night</h3>
+                <h3>तारों भरी पहाड़ी रात</h3>
                 <p>Category: Night Photography</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <article class="photo-card" data-category="night">
-            <img
-                src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=900&q=80"
-                alt="Beautiful night sky"
-                loading="lazy"
-            >
+            <img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=1200&q=85" alt="आकाश के चमत्कार" loading="lazy">
             <div class="photo-info">
-                <h3>Night Sky Wonders</h3>
+                <h3>आकाश के चमत्कार</h3>
                 <p>Category: Night Photography</p>
                 <div class="photo-actions">
-                    <button class="small-btn view-btn">View Photo</button>
-                    <button class="small-btn download-btn">Download</button>
+                    <button class="small-btn view-btn">फोटो देखें</button>
+                    <button class="small-btn download-btn">डाउनलोड</button>
                 </div>
             </div>
         </article>
 
         <p class="no-results" id="noResults">
-            No photos found. Try another search.
+            कोई फोटो नहीं मिली। कृपया दूसरा शब्द खोजें।
         </p>
-
     </div>
 </section>
 
 <!-- ABOUT PHOTOGRAPHER -->
-
 <section class="about" id="about">
-
     <div class="about-content">
-        <h2 class="section-title">About Photographer</h2>
-
+        <h2 class="section-title">फोटोग्राफर के बारे में</h2>
         <p>
-            Welcome to Mountain Lens! I am passionate about capturing
-            the raw, untouched beauty of mountain landscapes, deep
-            valleys, and peaceful village life across the majestic
-            Himalayas of Uttarakhand.
+            माउंटेन लेंस (Mountain Lens) में आपका स्वागत है! मैं उत्तराखंड 
+            के राजसी हिमालयी क्षेत्रों में पहाड़ी परिदृश्यों, गहरी घाटियों 
+            और शांत ग्रामीण जीवन की अनछुए सौंदर्य को कैद करने के लिए जुनूनी हूँ।
         </p>
-
         <p>
-            Every photograph tells a story of the serene heights,
-            shifting clouds, and vibrant nature of Devbhumi.
-            My goal is to share the beauty of the mountains with the world.
+            हर तस्वीर देवभूमि की शांत ऊंचाइयों, बदलते बादलों और जीवंत 
+            प्रकृति की कहानी बयां करती है। मेरा उद्देश्य पहाड़ों की 
+            सुंदरता को दुनिया के साथ साझा करना है।
         </p>
-
-        <a href="#contact" class="btn">Get In Touch</a>
+        <a href="#contact" class="btn">संपर्क करें</a>
     </div>
-
 </section>
 
 <!-- CONTACT FORM -->
-
 <section id="contact">
-
-    <h2 class="section-title">Contact Me</h2>
-
+    <h2 class="section-title">मुझसे संपर्क करें</h2>
     <p class="section-description">
-        Have a question or want to share your love for mountains?
-        Send a message.
+        कोई सवाल है या पहाड़ों के प्रति अपना प्यार साझा करना चाहते हैं? 
+        एक संदेश भेजें।
     </p>
-
     <div class="contact-content">
-
         <form class="contact-form" id="contactForm">
-
-            <input
-                type="text"
-                id="contactName"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                id="contactEmail"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                id="contactMessage"
-                placeholder="Write your message..."
-                required
-            ></textarea>
-
-            <button type="submit" class="btn">
-                Prepare Message
-            </button>
-
+            <input type="text" id="contactName" placeholder="आपका नाम" required>
+            <input type="email" id="contactEmail" placeholder="आपका ईमेल" required>
+            <textarea id="contactMessage" placeholder="अपना संदेश यहाँ लिखें..." required></textarea>
+            <button type="submit" class="btn">संदेश भेजें</button>
         </form>
-
         <p class="form-message" id="formMessage" aria-live="polite"></p>
-
     </div>
 </section>
 
-<!-- FULL-SCREEN IMAGE VIEWER -->
-
-<div
-    class="lightbox"
-    id="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Photo viewer"
-    onclick="if(event.target === this) closeLightbox()"
->
-    <button
-        class="lightbox-close"
-        onclick="closeLightbox()"
-        aria-label="Close photo"
-    >&times;</button>
-
+<!-- FULL-SCREEN IMAGE VIEWER (LIGHTBOX) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="if(event.target === this) closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">&times;</button>
     <img id="lightboxImage" src="" alt="Enlarged mountain photograph">
-
     <h3 class="lightbox-caption" id="lightboxCaption"></h3>
-
-    <button class="btn lightbox-download" id="lightboxDownload">
-        Download Photo
-    </button>
+    <a href="#" class="btn lightbox-download" id="lightboxDownload" target="_blank" download>फोटो डाउनलोड करें</a>
 </div>
 
 <!-- FOOTER -->
-
 <footer>
     <p>
-        © <span id="year"></span>
-        <span>Mountain Lens</span> |
-        Capturing the Beauty of Uttarakhand 🏔️
+        © <span id="year"></span> 
+        <span>Mountain Lens</span> | 
+        उत्तराखंड की सुंदरता को कैद करते हुए 🏔️
     </p>
 </footer>
 
 <script>
-
 // CURRENT YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-
-// SEARCH AND CATEGORY FILTER
-
+// SEARCH AND CATEGORY FILTER LOGIC
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const cards = document.querySelectorAll(".photo-card");
 const noResults = document.getElementById("noResults");
 
 function filterGallery() {
-
     const searchText = searchInput.value.toLowerCase().trim();
     const selectedCategory = categoryFilter.value;
-
     let visibleCount = 0;
 
     cards.forEach(card => {
-
         const title = card.querySelector("h3").textContent.toLowerCase();
         const category = card.dataset.category;
-        const description =
-            card.querySelector(".photo-info p").textContent.toLowerCase();
+        const description = card.querySelector(".photo-info p").textContent.toLowerCase();
 
-        const matchesSearch =
-            title.includes(searchText) ||
-            description.includes(searchText);
-
-        const matchesCategory =
-            selectedCategory === "all" ||
-            selectedCategory === category;
+        const matchesSearch = title.includes(searchText) || description.includes(searchText);
+        const matchesCategory = selectedCategory === "all" || selectedCategory === category;
 
         if (matchesSearch && matchesCategory) {
             card.style.display = "";
@@ -803,8 +650,42 @@ function filterGallery() {
         }
     });
 
-    noResults.style.display =
-        visibleCount === 0 ? "block" : "none";
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
 }
 
-searchInput.addEventListener("input", filte
+searchInput.addEventListener("input", filterGallery);
+categoryFilter.addEventListener("change", filterGallery);
+
+// LIGHTBOX & DOWNLOAD LOGIC
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxDownload = document.getElementById("lightboxDownload");
+
+cards.forEach(card => {
+    const img = card.querySelector("img");
+    const title = card.querySelector("h3").textContent;
+    const viewBtn = card.querySelector(".view-btn");
+    const downloadBtn = card.querySelector(".download-btn");
+
+    // फोटो बड़ी करने का फंक्शन (LightBox Open)
+    const openViewer = () => {
+        lightboxImage.src = img.src;
+        lightboxCaption.textContent = title;
+        lightboxDownload.href = img.src;
+        lightbox.style.display = "flex";
+    };
+
+    img.addEventListener("click", openViewer);
+    viewBtn.addEventListener("click", openViewer);
+    
+    // डाउनलोड बटन का कोड (Direct Download / New Tab Fallback)
+    downloadBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = title.replace(/\s+/g, '-').toLowerCase() + '.jpg';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        documen
