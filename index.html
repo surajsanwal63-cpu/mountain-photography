@@ -14,19 +14,19 @@
         }
 
         body {
-            background-color: #0b0f19; /* Dark Black Theme */
+            background-color: #0b0f19;
             color: #ffffff;
             min-height: 100vh;
         }
 
-        /* Welcome Popup Modal with Strict Validation */
+        /* Welcome Popup Modal */
         #welcome-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,7 +62,7 @@
             padding: 12px 15px;
             margin-bottom: 18px;
             border-radius: 10px;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             outline: none;
             background: rgba(255, 255, 255, 0.95);
             font-size: 1rem;
@@ -403,7 +403,6 @@
             background: #059669;
         }
 
-        /* Footer */
         footer {
             margin-top: 80px;
             padding: 30px;
@@ -427,11 +426,11 @@
         <div class="modal-box">
             <h2>Welcome</h2>
             <p>Please enter your name and 10-digit mobile number to proceed.</p>
-            <form onsubmit="validateAndOpen(event)">
-                <input type="text" id="user-name" placeholder="Enter your name" required>
-                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required>
-                <button type="submit">Submit</button>
-            </form>
+            <div style="width:100%;">
+                <input type="text" id="user-name" placeholder="Enter your name" style="width:100%;">
+                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" style="width:100%;">
+                <button type="button" onclick="checkNumber()">Submit</button>
+            </div>
         </div>
     </div>
 
@@ -460,7 +459,7 @@
         <a href="#gallery" class="btn-explore">Explore Gallery</a>
     </section>
 
-    <!-- Main Container for Gallery, About & Contact -->
+    <!-- Main Container -->
     <div class="container" id="gallery">
         <h2 class="section-title">Photo Gallery</h2>
         <p class="section-desc">Explore breathtaking landscapes across Uttarakhand</p>
@@ -481,7 +480,6 @@
         <!-- Gallery Items -->
         <div class="gallery-grid" id="galleryGrid">
             
-            <!-- Snow Mountains -->
             <div class="photo-card" data-category="snow" data-title="Snow Mountain Sunrise">
                 <img src="https://github.com/user-attachments/assets/8421f556-7a30-47ab-b8ea-384590d9a0ec" alt="Snow Mountain" onclick="openLightbox(this.src, 'Snow Mountain Sunrise')">
                 <div class="photo-info">
@@ -490,7 +488,6 @@
                 </div>
             </div>
 
-            <!-- Green Mountains -->
             <div class="photo-card" data-category="green" data-title="Dumak Valley View">
                 <img src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" alt="Dumak Valley" onclick="openLightbox(this.src, 'Dumak Valley View')">
                 <div class="photo-info">
@@ -499,7 +496,6 @@
                 </div>
             </div>
 
-            <!-- Himalayan Ranges -->
             <div class="photo-card" data-category="snow" data-title="Himalayan Ranges">
                 <img src="https://github.com/user-attachments/assets/7c3a5f22-f59b-4876-984e-4e7c16870f06" alt="Ranges" onclick="openLightbox(this.src, 'Himalayan Ranges')">
                 <div class="photo-info">
@@ -508,7 +504,6 @@
                 </div>
             </div>
 
-            <!-- Green Hills -->
             <div class="photo-card" data-category="green" data-title="Green Hills & Clouds">
                 <img src="https://github.com/user-attachments/assets/05c6daad-3bae-4529-806b-3b0b66e9bd98" alt="Green Hills" onclick="openLightbox(this.src, 'Green Hills & Clouds')">
                 <div class="photo-info">
@@ -521,15 +516,12 @@
 
         <!-- About & Contact Section -->
         <div class="about-contact-grid" id="about">
-            
-            <!-- About Photographer -->
             <div class="box-card">
                 <h3>About Photographer</h3>
                 <p>Welcome to Mountain Lens! I am passionate about capturing the raw, untouched beauty of mountain landscapes, deep valleys, and peaceful village life across the majestic Himalayas of Uttarakhand.</p>
                 <p>Every photograph tells a story of the serene heights, shifting clouds, and vibrant nature of Devbhumi.</p>
             </div>
 
-            <!-- Contact Form -->
             <div class="box-card" id="contact">
                 <h3>Contact Me</h3>
                 <form class="contact-form" onsubmit="handleContact(event)">
@@ -539,22 +531,24 @@
                     <button type="submit">Send Message</button>
                 </form>
             </div>
-
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Mountain Lens | Devbhumi Uttarakhand. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
+    <!-- JavaScript -->
     <script>
-        // 1. Strict Mobile Number Validation Popup
-        function validateAndOpen(event) {
-            event.preventDefault();
-            var phone = document.getElementById('user-phone').value;
+        function checkNumber() {
+            var name = document.getElementById('user-name').value.trim();
+            var phone = document.getElementById('user-phone').value.trim();
             var mobileRegex = /^[6-9]\d{9}$/;
+            
+            if(name === "") {
+                alert('Please enter your name!');
+                return;
+            }
             
             if(mobileRegex.test(phone)) {
                 document.getElementById('welcome-modal').style.display = 'none';
@@ -563,7 +557,6 @@
             }
         }
 
-        // 2. Lightbox Full-Screen View
         function openLightbox(imgSrc, captionText) {
             document.getElementById('lightbox').style.display = 'flex';
             document.getElementById('lightbox-img').src = imgSrc;
@@ -574,13 +567,10 @@
             document.getElementById('lightbox').style.display = 'none';
         }
 
-        // 3. Category Filter
         function filterCategory(category, btn) {
-            // Update active button style
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // Filter cards
             let cards = document.querySelectorAll('.photo-card');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -591,7 +581,6 @@
             });
         }
 
-        // 4. Live Search Function
         function searchPhotos() {
             let input = document.getElementById('searchBar').value.toLowerCase();
             let cards = document.querySelectorAll('.photo-card');
@@ -601,4 +590,16 @@
                 if (title.includes(input)) {
                     card.style.display = 'block';
                 } else {
-                    car
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function handleContact(event) {
+            event.preventDefault();
+            alert('Thank you for reaching out! Your message has been sent successfully.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
