@@ -128,7 +128,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://github.com/user-attachments/assets/1000401366.jpg') no-repeat center center/cover;
+            background: linear-gradient(135deg, #0b0f19, #1e293b, #0f172a);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -421,14 +421,17 @@
 </head>
 <body>
 
-    <!-- Welcome Popup Modal -->
+    <!-- Welcome Popup Modal with Form Submission -->
     <div id="welcome-modal">
         <div class="modal-box">
             <h2>Welcome</h2>
             <p>Please enter your name and 10-digit mobile number to proceed.</p>
-            <input type="text" id="user-name" placeholder="Enter your name">
-            <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number">
-            <button onclick="openWebsite()">Submit</button>
+            
+            <form onsubmit="validateAndOpen(event)">
+                <input type="text" id="user-name" placeholder="Enter your name" required>
+                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
 
@@ -506,7 +509,7 @@
             </div>
 
             <!-- 4. Sunrise Nanda Devi Parvat -->
-	    <div class="photo-card" data-category="sunrise" data-title="sunrise nanda devi parvat">
+            <div class="photo-card" data-category="sunrise" data-title="sunrise nanda devi parvat">
                 <img src="https://github.com/user-attachments/assets/1000401383.jpg" alt="sunrise nanda devi parvat" onclick="openLightbox(this.src, 'Sunrise Nanda Devi Parvat')">
                 <div class="photo-info">
                     <span class="photo-title">Sunrise Nanda Devi Parvat</span>
@@ -551,20 +554,15 @@
 
     <!-- JavaScript -->
     <script>
-        function openWebsite() {
-            var name = document.getElementById('user-name').value.trim();
+        function validateAndOpen(event) {
+            event.preventDefault();
             var phone = document.getElementById('user-phone').value.trim();
             var mobileRegex = /^[6-9]\d{9}$/;
-            
-            if(name === "") {
-                alert("Please enter your name!");
-                return;
-            }
             
             if(mobileRegex.test(phone)) {
                 document.getElementById('welcome-modal').style.display = 'none';
             } else {
-                alert("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!");
+                alert('Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!');
             }
         }
 
@@ -600,3 +598,8 @@
                 let title = card.getAttribute('data-title').toLowerCase();
                 if (title.includes(input)) {
                     card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
