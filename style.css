@@ -7,3 +7,26 @@ console.log("Mountain Photography Website is running!");
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
 }
+/* हर फोटो और उसके नाम वाले कार्ड का स्टाइल */
+.photo-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+}
+
+/* फोटो के नाम (Text) का स्टाइल */
+.photo-title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
