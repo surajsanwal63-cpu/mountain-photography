@@ -426,11 +426,9 @@
         <div class="modal-box">
             <h2>Welcome</h2>
             <p>Please enter your name and 10-digit mobile number to proceed.</p>
-            <div style="width:100%;">
-                <input type="text" id="user-name" placeholder="Enter your name" style="width:100%;">
-                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" style="width:100%;">
-                <button type="button" onclick="checkNumber()">Submit</button>
-            </div>
+            <input type="text" id="user-name" placeholder="Enter your name">
+            <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number">
+            <button onclick="openWebsite()">Submit</button>
         </div>
     </div>
 
@@ -508,7 +506,7 @@
             </div>
 
             <!-- 4. Sunrise Nanda Devi Parvat -->
-            <div class="photo-card" data-category="sunrise" data-title="sunrise nanda devi parvat">
+	    <div class="photo-card" data-category="sunrise" data-title="sunrise nanda devi parvat">
                 <img src="https://github.com/user-attachments/assets/1000401383.jpg" alt="sunrise nanda devi parvat" onclick="openLightbox(this.src, 'Sunrise Nanda Devi Parvat')">
                 <div class="photo-info">
                     <span class="photo-title">Sunrise Nanda Devi Parvat</span>
@@ -553,20 +551,20 @@
 
     <!-- JavaScript -->
     <script>
-        function checkNumber() {
+        function openWebsite() {
             var name = document.getElementById('user-name').value.trim();
             var phone = document.getElementById('user-phone').value.trim();
             var mobileRegex = /^[6-9]\d{9}$/;
             
             if(name === "") {
-                alert('Please enter your name!');
+                alert("Please enter your name!");
                 return;
             }
             
             if(mobileRegex.test(phone)) {
                 document.getElementById('welcome-modal').style.display = 'none';
             } else {
-                alert('Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!');
+                alert("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!");
             }
         }
 
@@ -576,7 +574,7 @@
             document.getElementById('lightbox-caption').innerText = captionText;
         }
 
-        closeLightbox = function() {
+        function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
         }
 
@@ -599,4 +597,6 @@
             let cards = document.querySelectorAll('.photo-card');
 
             cards.forEach(card => {
-                let title = card.getAt
+                let title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = 'block';
