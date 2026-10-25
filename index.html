@@ -36,7 +36,7 @@
         }
 
         .modal-box {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             padding: 40px;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -52,8 +52,8 @@
         }
 
         .modal-box p {
-            color: #ddd;
-            font-size: 0.95rem;
+            color: #e0e0e0;
+            font-size: 1rem;
             margin-bottom: 25px;
             line-height: 1.4;
         }
@@ -67,6 +67,7 @@
             outline: none;
             background: rgba(255, 255, 255, 0.95);
             font-size: 1rem;
+            box-sizing: border-box;
         }
 
         .modal-box button {
@@ -163,14 +164,17 @@
 </head>
 <body>
 
-    <!-- Welcome Popup Modal -->
+    <!-- Welcome Popup Modal (Strict Validation) -->
     <div id="welcome-modal">
         <div class="modal-box">
             <h2>Welcome</h2>
             <p>Please enter your name and 10-digit mobile number to proceed.</p>
+            
             <form onsubmit="validateAndOpen(event)">
                 <input type="text" id="user-name" placeholder="Enter your name" required>
-                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                
+                <input type="tel" id="user-phone" placeholder="Enter 10-digit mobile number" required>
+                
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -182,7 +186,7 @@
         <p>पहाड़ों की ऊँचाइयों और खूबसूरत वादियों का सफर</p>
     </header>
 
-    <!-- Photo Gallery -->
+    <!-- Photo Gallery with Titles -->
     <div class="gallery">
         <div class="photo-card">
             <img src="https://github.com/user-attachments/assets/87960138-dadc-4f17-817a-97ba57c9e5fe" alt="Dumak Valley">
@@ -207,16 +211,19 @@
         <p>© 2026 Mountain Photography | Designed with ❤️</p>
     </footer>
 
-    <!-- JavaScript Validation -->
+    <!-- Strict JavaScript Validation -->
     <script>
         function validateAndOpen(event) {
             event.preventDefault();
             var phone = document.getElementById('user-phone').value;
             
-            if(phone.length === 10 && !isNaN(phone)) {
+            // Yeh check karega ki number theek 10 ankon ka ho aur 6, 7, 8 ya 9 se shuru ho
+            var mobileRegex = /^[6-9]\d{9}$/;
+            
+            if(mobileRegex.test(phone)) {
                 document.getElementById('welcome-modal').style.display = 'none';
             } else {
-                alert('Please enter a valid 10-digit mobile number!');
+                alert('Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9!');
             }
         }
     </script>
